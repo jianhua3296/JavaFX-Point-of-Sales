@@ -58,6 +58,7 @@ public class ProductModel implements ProductDao {
         session.beginTransaction();
         session.save(product);
         session.getTransaction().commit();
+        
     }
 
     @Override

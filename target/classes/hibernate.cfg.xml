@@ -9,6 +9,7 @@
         <property name="hibernate.connection.username">admin</property>
         <property name="hibernate.connection.password">inventory</property>
         <property name="hibernate.current_session_context_class">thread</property>
+        <property name="show_sql">true</property>
         <mapping class="com.rafsan.inventory.entity.Category"/>
         <mapping class="com.rafsan.inventory.entity.Employee"/>
         <mapping class="com.rafsan.inventory.entity.Invoice"/>
