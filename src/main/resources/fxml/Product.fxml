@@ -89,6 +89,7 @@
                               <TableColumn fx:id="priceColumn" prefWidth="75.0" text="Price" />
                               <TableColumn fx:id="quantityColumn" prefWidth="75.0" text="Quantity" />
                               <TableColumn fx:id="descriptionColumn" prefWidth="75.0" text="Description" />
+                              <TableColumn fx:id="imageColumn" prefWidth="75.0" text="Image(未完成)" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

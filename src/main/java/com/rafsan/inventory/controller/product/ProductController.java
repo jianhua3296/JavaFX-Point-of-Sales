@@ -51,7 +51,7 @@ public class ProductController implements Initializable, ProductInterface {
     @FXML
     private TableColumn<Product, Long> idColumn;
     @FXML
-    private TableColumn<Product, String> categoryColumn,nameColumn, supplierColumn, descriptionColumn;
+    private TableColumn<Product, String> categoryColumn,nameColumn, supplierColumn, descriptionColumn, imageColumn;
     @FXML
     private TableColumn<Product, Double> priceColumn, quantityColumn;
     @FXML
@@ -83,14 +83,17 @@ public class ProductController implements Initializable, ProductInterface {
         loadData();
 
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        
         categoryColumn.setCellValueFactory((TableColumn.CellDataFeatures<Product, String> p)
                 -> new SimpleStringProperty(p.getValue().getCategory().getType()));
+        
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
         supplierColumn.setCellValueFactory((TableColumn.CellDataFeatures<Product, String> p)
                 -> new SimpleStringProperty(p.getValue().getSupplier().getName()));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        imageColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         productTable.setItems(PRODUCTLIST);
 
         filterData();
@@ -137,12 +140,12 @@ public class ProductController implements Initializable, ProductInterface {
                         //filter match category type
                         return true;
                     }
-                    else if (String.valueOf(product.getPrice()).indexOf(lowerCaseFilter)!=-1)
+                    else if (String.valueOf(product.getPrice()).contains(lowerCaseFilter))
                     {
                         //filter match price
                          return true;
                     }
-                    else if (String.valueOf(product.getQuantity()).indexOf(lowerCaseFilter)!=-1)
+                    else if (String.valueOf(product.getQuantity()).contains(lowerCaseFilter))
                     {
                         //filter match quantity
                          return true;
@@ -330,8 +333,8 @@ public class ProductController implements Initializable, ProductInterface {
         stage.show();
         controller.setProduct(selectedProduct, selectedProductId);
         productTable.getSelectionModel().clearSelection();
-    }
 
+    }
     @FXML
     public void deleteAction(ActionEvent event) {
 
