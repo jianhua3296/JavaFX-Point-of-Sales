@@ -133,9 +133,9 @@ public class ProductController implements Initializable, ProductInterface {
 
     private void drawerAction() {
 
-        TranslateTransition openNav = new TranslateTransition(new Duration(350), drawer);
+        TranslateTransition openNav = new TranslateTransition(new Duration(180), drawer);
         openNav.setToX(0);
-        TranslateTransition closeNav = new TranslateTransition(new Duration(350), drawer);
+        TranslateTransition closeNav = new TranslateTransition(new Duration(180), drawer);
         menu.setOnAction((ActionEvent evt) -> {
             if (drawer.getTranslateX() != 0) {
                 openNav.play();
