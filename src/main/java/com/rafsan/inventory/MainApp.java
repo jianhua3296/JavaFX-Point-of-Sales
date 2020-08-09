@@ -46,7 +46,7 @@ public class MainApp extends Application {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("An error has occured!");
                 alert.setHeaderText("Database Connection Error!!!");
-                alert.setContentText("Please contact the developer");
+                alert.setContentText("Please check your database setting at hibernate.cfg");
                 alert.showAndWait();
                 Platform.exit();
             });

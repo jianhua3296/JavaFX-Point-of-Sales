@@ -111,7 +111,7 @@ public class EmployeeModel implements EmployeeDao {
         System.out.println("\n password in database: "+employee.getPassword() + "\n you typed: "+ password);
         
 
-//        return employee.getPassword().equals(password);
-        return true;
+        return employee.getPassword().equals(password);
+//        return true;
     }
 }
