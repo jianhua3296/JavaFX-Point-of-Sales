@@ -106,20 +106,46 @@ public class ProductController implements Initializable, ProductInterface {
                 .bind(Bindings.isEmpty(productTable.getSelectionModel().getSelectedItems()));
     }
 
+    //method to define filter criteria
     private void filterData() {
 
         FilteredList<Product> searchedData = new FilteredList<>(PRODUCTLIST, e -> true);
+        
+        //filter when a key release
         searchField.setOnKeyReleased(e -> {
             searchField.textProperty().addListener((observable, oldValue, newValue) -> {
                 searchedData.setPredicate(product -> {
+                    
                     if (newValue == null || newValue.isEmpty()) {
                         return true;
                     }
+                    //filter with the lowercase new value
                     String lowerCaseFilter = newValue.toLowerCase();
+                    
+                    
                     if (product.getProductName().toLowerCase().contains(lowerCaseFilter)) {
+                        //filter match product name
                         return true;
                     } else if (product.getDescription().toLowerCase().contains(lowerCaseFilter)) {
+                        //filter match product desciption
                         return true;
+                    } else if (product.getSupplier().getName().toLowerCase().contains(lowerCaseFilter)) {
+                        //filter match supplier name
+                        return true;
+                    }
+                    else if (product.getCategory().getType().toLowerCase().contains(lowerCaseFilter)) {
+                        //filter match category type
+                        return true;
+                    }
+                    else if (String.valueOf(product.getPrice()).indexOf(lowerCaseFilter)!=-1)
+                    {
+                        //filter match price
+                         return true;
+                    }
+                    else if (String.valueOf(product.getQuantity()).indexOf(lowerCaseFilter)!=-1)
+                    {
+                        //filter match quantity
+                         return true;
                     }
                     return false;
                 });
