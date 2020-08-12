@@ -32,6 +32,8 @@ public class EditController implements Initializable, ProductInterface {
     private ComboBox categoryBox, supplierBox;
     @FXML
     private Button saveButton;
+    @FXML
+    private Button cancelButton;
     private ProductModel productModel;
     private CategoryModel categoryModel;
     private SupplierModel supplierModel;
@@ -107,6 +109,7 @@ public class EditController implements Initializable, ProductInterface {
     @FXML
     public void handleCancel(ActionEvent event) {
         resetValues();
+        ((Stage) cancelButton.getScene().getWindow()).close();
     }
 
     private boolean validateInput() {
@@ -146,8 +149,5 @@ public class EditController implements Initializable, ProductInterface {
         }
     }
 
-    @FXML
-    public void closeAction(ActionEvent event) {
-        ((Node) (event.getSource())).getScene().getWindow().hide();
-    }
+
 }

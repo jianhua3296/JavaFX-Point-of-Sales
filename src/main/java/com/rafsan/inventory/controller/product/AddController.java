@@ -14,7 +14,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -32,6 +31,8 @@ public class AddController implements Initializable, ProductInterface {
     private ComboBox categoryBox, supplierBox;
     @FXML
     private Button saveButton;
+    @FXML
+    private Button cancelButton;
     private ProductModel productModel;
     private CategoryModel categoryModel;
     private SupplierModel supplierModel;
@@ -84,6 +85,7 @@ public class AddController implements Initializable, ProductInterface {
         quantityField.setText("");
         descriptionArea.setText("");
         categoryBox.valueProperty().setValue(null);
+        ((Stage) cancelButton.getScene().getWindow()).close();
     }
 
     private boolean validateInput() {
@@ -123,8 +125,5 @@ public class AddController implements Initializable, ProductInterface {
         }
     }
 
-    @FXML
-    public void closeAction(ActionEvent event) {
-        ((Node) (event.getSource())).getScene().getWindow().hide();
-    }
+
 }
